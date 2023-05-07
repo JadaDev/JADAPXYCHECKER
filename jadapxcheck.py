@@ -30,7 +30,7 @@ def main():
 ╚█████╔╝██║  ██║██████╔╝██║  ██║██║     ██╔╝ ██╗   ██║   
  ╚════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   
     ''')
-    url_choice = input("Enter the URL of the proxies list: ") or 'https://github.com/JadaDev/proxylist/blob/main/MyProxies.txt'
+    url_choice = input("Enter the URL of the proxies list: ") or 'https://raw.githubusercontent.com/JadaDev/proxylist/main/MyProxies.txt'
     timeout = input("Enter the timeout in seconds (default is 30, minimum is 1, maximum is 60): ")
     timeout = int(timeout) if timeout.isdigit() and 1 <= int(timeout) <= 60 else 30
     proxies = requests.get(url_choice).text.strip().split('\n')
