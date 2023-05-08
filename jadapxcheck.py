@@ -30,6 +30,7 @@ def main():
 ╚█████╔╝██║  ██║██████╔╝██║  ██║██║     ██╔╝ ██╗   ██║   
  ╚════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   
     ''')
+    url_test = 'https://www.google.com'
     url_choice = input("Enter the URL of the proxies list: ") or 'https://raw.githubusercontent.com/JadaDev/proxylist/main/MyProxies.txt'
     timeout = input("Enter the timeout in seconds (default is 30, minimum is 1, maximum is 60): ")
     timeout = int(timeout) if timeout.isdigit() and 1 <= int(timeout) <= 60 else 30
@@ -39,7 +40,7 @@ def main():
     checked_proxies = []
     working_proxies = []
     for proxy in proxies:
-        t = threading.Thread(target=check_proxy, args=(proxy, checked_proxies, working_proxies, url_choice, timeout))
+        t = threading.Thread(target=check_proxy, args=(proxy, checked_proxies, working_proxies, url_test, timeout))
         t.start()
         time.sleep(0.5)
     while threading.active_count() > 1:
