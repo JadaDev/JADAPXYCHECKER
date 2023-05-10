@@ -31,8 +31,8 @@ def main():
  ╚════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   
     ''')
     url_test = 'http://67.227.23.230'
-    url_choice = input("Enter the URL of the proxies list: ") or 'https://raw.githubusercontent.com/JadaDev/proxylist/main/MyProxies.txt'
-    timeout = input("Enter the timeout in seconds (default is 30, minimum is 1, maximum is 60): ")
+    url_choice = input("Enter the URL of the proxies list: ") or 'https://raw.githubusercontent.com/JadaDev/proxylist/main/WorkingProxies.txt'
+    timeout = input("Enter the timeout in seconds (default is 30, minimum is 1, maximum is 60): ") or '30'
     timeout = int(timeout) if timeout.isdigit() and 1 <= int(timeout) <= 60 else 30
     proxies = requests.get(url_choice).text.strip().split('\n')
     total_proxies = len(proxies)
@@ -42,10 +42,10 @@ def main():
     for proxy in proxies:
         t = threading.Thread(target=check_proxy, args=(proxy, checked_proxies, working_proxies, url_test, timeout))
         t.start()
-        time.sleep(1)
+        time.sleep(0.5)
     while threading.active_count() > 1:
         try:
-            time.sleep(5)
+            time.sleep(1)
         except KeyboardInterrupt:
             print('\nExiting...')
             os._exit(1)
