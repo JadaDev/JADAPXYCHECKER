@@ -12,7 +12,7 @@ def check_proxy(proxy, checked_proxies, working_proxies, url, timeout):
             working_proxies.append(proxy)
             print(colored(f'[+] Total Checked: {len(checked_proxies): <10} Total Working: {len(working_proxies): <10} Total Proxies: {len(proxies): <10} {proxy}', 'green'))
             with open('proxy.txt', 'a') as f:
-                f.write(proxy + '')
+                f.write(proxy + '\n')
         else:
             print(colored(f'[-] Total Checked: {len(checked_proxies): <10} Total Working: {len(working_proxies): <10} Total Proxies: {len(proxies): <10} {proxy}', 'red'))
     except:
